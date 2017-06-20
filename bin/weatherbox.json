@@ -1,0 +1,53 @@
+﻿[
+  {
+    "id": 1,
+    "name": "园区室内",
+    "loc": "麒麟工业园区演示室内",
+    "temprature": "29",
+    "maxtemprature": "32",
+    "mintemprature": "22",
+    "humidity": "60%",
+    "maxhumidity": "68%",
+    "minhumidity": "53%",
+    "pm2": 102,
+    "maxpm2": 153,
+    "minpm2": 98,
+    "co2": 550,
+    "maxco2": 153,
+    "minco2": 98
+  },
+  {
+    "id": 2,
+    "name": "室外1",
+    "loc": "麒麟工业园区室外1",
+    "temprature": "29",
+    "maxtemprature": "32",
+    "mintemprature": "22",
+    "humidity": "60%",
+    "maxhumidity": "68%",
+    "minhumidity": "53%",
+    "pm2": 102,
+    "maxpm2": 153,
+    "minpm2": 98,
+    "co2": 550,
+    "maxco2": 153,
+    "minco2": 98
+  },
+  {
+    "id": 3,
+    "name": "室外2",
+    "loc": "麒麟工业园区室外2",
+    "temprature": "29",
+    "maxtemprature": "32",
+    "mintemprature": "22",
+    "humidity": "60%",
+    "maxhumidity": "68%",
+    "minhumidity": "53%",
+    "pm2": 102,
+    "maxpm2": 153,
+    "minpm2": 98,
+    "co2": 550,
+    "maxco2": 153,
+    "minco2": 98
+  }
+]

@@ -1,0 +1,180 @@
+.textCenterKevin
+{
+    width: 100%;
+ /*   float: left;*/
+    display: block;
+    margin: 10px 0;
+    color: #8e9ac4;
+    text-decoration: none;
+    padding: 13px;
+   /* position: relative;*/
+    text-align: center;
+/*    background: #2c3654;*/
+}
+
+
+
+
+
+/*======================================*/
+/* media, event and data listing  css */
+/*=====================================*/
+.card-list-kevin {
+    /*max-height: 400px;*/
+    overflow-y: auto;
+    color: #d2bde2;
+}
+
+.card-list-kevin > .media {
+    color: #b592d0;
+    text-decoration: none;
+    padding: 0 1em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.card-list-kevin > .media:last-child {
+    border-bottom: 0;
+}
+
+.card-list-kevin > .media .message_userpic {
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-right: 15px;
+    position: relative;
+}
+
+.card-list-kevin > .media .message_userpic .user-status {
+    height: 8px;
+    width: 8px;
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.2) ;
+    -moz-box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.2) ;
+    -ms-box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.2) ;
+    box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.2) ;
+    border: 1px solid #ffffff;
+}
+
+.card-list-kevin > .media h6 {
+    color: white;
+}
+
+.card-list-kevin > .media h6 small {
+    color: #b592d0;
+}
+
+.card-list-kevin > .media .description {
+    color: #d7c4e5;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.card-list-kevin > .media .invites-by {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-list-kevin > .media .invites-by img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.card-list-kevin > .media .invites-by .user-status {
+    height: 6px;
+    width: 6px;
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.2) ;
+    -moz-box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.2) ;
+    -ms-box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.2) ;
+    box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.2) ;
+    border: 1px solid #ffffff;
+}
+
+.card-list-kevin > .media .overlay {
+    position: absolute;
+    height: 100.1%;
+    width: 100%;
+    padding: 10px;
+    vertical-align: middle;
+    display: flex;
+    left: 0;
+    top: 0px;
+    display: block;
+    opacity: 0;
+    text-align: right;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.card-list-kevin > .media .overlay .btn {
+    padding: 0;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.card-list-kevin > .media .overlay .btn i {
+    margin: 0;
+}
+
+.card-list-kevin > .media.new {
+    background: #482e58;
+}
+
+.card-list-kevin > .media:hover .description, .card-list-kevin > .media:hover h6, .card-list-kevin > .media:hover h6 small, .card-list-kevin > .media.active .description, .card-list-kevin > .media.active h6, .card-list-kevin > .media.active h6 small {
+    color: white;
+}
+
+.card-list-kevin > .media:hover .overlay, .card-list-kevin > .media.active .overlay {
+    opacity: 1;
+    display: block;
+}
+
+.card-list-kevin.bordered .media {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 0;
+}
+
+.card-list-kevin.bordered .media:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-list-kevin.bordered .media .btn {
+    text-align: center;
+}
+
+.card-list-kevin.bordered .media .btn-sm {
+    line-height: 10px;
+    padding: 6px 10px;
+    min-width: 60px;
+}
