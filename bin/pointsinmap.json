@@ -1,0 +1,50 @@
+﻿{
+  "gateways": [
+    {
+      "id": 1,
+      "name": "园区室内",
+      "loc": "麒麟工业园区演示室内",
+      "pointLon": 234323432,
+      "pointLat": 32544354,
+      "isonline": 1,
+      "light": [
+        {
+          "id": 1,
+          "name": "园区室内",
+          "loc": "麒麟工业园区演示室内",
+          "pointLon": 118.928102,
+          "pointLat": 32.03331,
+          "gateway": 1,
+          "isonline": 1,
+          "camera": {
+            "ip": "192.168.1.101",
+            "isonline":1
+          },
+          "airbox": {
+            "ip": "192.168.2.101",
+            "isonline":1
+          }
+        },
+        {
+          "id": 2,
+          "name": "室外1",
+          "loc": "麒麟工业园区室外1",
+          "pointLon": 118.929414,
+          "pointLat": 32.03243,
+          "gateway": 1,
+          "isonline":0
+        },
+        {
+          "id": 3,
+          "name": "室外2",
+          "loc": "麒麟工业园区室外2",
+          "pointLon": 118.926701,
+          "pointLat": 32.032032,
+          "gateway": 1,
+          "isonline":1
+        }
+      ]
+    }
+  ],
+
+}

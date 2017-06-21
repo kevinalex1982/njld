@@ -3,7 +3,8 @@
  */
 var jsonWeatherBox;
 $(document).ready(function () {
-    console.log('json');
+
+    
 
     $.post('/getJsonFile', {fileurl: "weatherbox.json"}, function (json) {
          jsonWeatherBox = JSON.parse(json);

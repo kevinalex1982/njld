@@ -1,0 +1,64 @@
+
+<div class="card full-screen-container" id="LivePower">
+    <div class="card-header align-items-start justify-content-between flex">
+        <ul class="nav nav-pills card-header-pills pull-left">
+
+            <li class="nav-item ">
+                <select class="form-control outline-primary eightemfont" id="areaLivePower" title="区域">
+                    <option value="0" selected>全部区域</option>
+                    <option value="1">鼓楼区</option>
+                    <option value="2">玄武区</option>
+                    <option value="3">秦淮区</option>
+                </select>
+            </li>
+
+            <li class="nav-item ml-2 ">
+                <select class="form-control outline-primary eightemfont" id="devicetype">
+                    <option value="0" selected>全部类型</option>
+                    <option value="1">智能路灯</option>
+                    <option value="2">网关</option>
+
+                </select>
+            </li>
+
+            <li class="nav-item ml-2 ">
+                <select class="form-control outline-primary eightemfont" id="devicestatus">
+                    <option value="0" selected>全部状态</option>
+                    <option value="1">正常</option>
+                    <option value="2">断线</option>
+
+                </select>
+            </li>
+
+            <li class="nav-item  ml-4 ">
+                <form class="form-inline mr-sm-2  pull-left search-header hidden-md-down">
+                    <input class="form-control outline-primary input input-sm eightemfont" type="text" placeholder="搜索"
+                           id="search_header">
+                    <button class="btn btn-link icon-header" style="margin-top: -3px" type="submit"><span
+                            class="fa fa-search"></span></button>
+                </form>
+            </li>
+
+
+        </ul>
+        <ul class="nav nav-pills card-header-pills pull-right">
+            <li class="nav-item">
+                <button class="btn btn-sm btn-link btn-round " id="clearRect"><i class="fa fa-minus-circle"></i>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-sm btn-link btn-round refresh-btn"><i class="fa fa-refresh"></i></button>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-sm btn-link btn-round fullscreen-btn"><i class="fa fa-arrows-alt"></i>
+                </button>
+            </li>
+        </ul>
+
+    </div>
+    <div class="card-block" id="parentLivePowerContainer">
+        <div id="mapContent" class="col-16  "></div>
+    </div>
+</div>
+    <!--<script src="http://api.map.baidu.com/api?v=2.0&ak=dH5VbXuNxvGMf71r91T8dFprPBo1zlqc" type="text/javascript"></script>-->
+    <script src="js/customizeJS/map.js"></script>

@@ -178,3 +178,19 @@
     padding: 6px 10px;
     min-width: 60px;
 }
+
+
+
+
+.outline-primary {
+    color: #6c8bef;
+    background-image: none;
+    background-color: transparent;
+    border-color: #6c8bef;
+}
+
+.eightemfont
+{
+    font-size: 0.8em
+}
+
