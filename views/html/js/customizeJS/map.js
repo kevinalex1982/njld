@@ -91,7 +91,7 @@ $(document).ready(function () {
     getWindowHeight();
 
     $("#mapContent").css('width', $("#pageContentContainer").css('width'));
-    $("#mapContent").css('height', winHeight - 160);
+    $("#mapContent").css('height', winHeight - 230);
 
 
 
