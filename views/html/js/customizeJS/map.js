@@ -14,11 +14,10 @@ var winHeight;
 var drawingManager;
 var customLayer;
 var overlays;
-
 var pointsinMaps = {
     "gateways": [
         {
-            "id": 1,
+            "id": 1000001,
             "name": "园区室内",
             "loc": "麒麟工业园区演示室内",
             "pointLon": 118.92812,
@@ -26,39 +25,60 @@ var pointsinMaps = {
             "isonline": 1,
             "lights": [
                 {
-                    "id": 1,
+                    "id": 2000001,
                     "name": "园区室内",
                     "loc": "麒麟工业园区演示室内",
                     "pointLon": 118.928102,
                     "pointLat": 32.03331,
-                    "gateway": 1,
+                    "gateway": 1000001,
                     "isonline": 1,
+                    "curele": 20,
+                    "curpower": 2243,
+                    "curlightnum": 15,
+                    "setlightnum": 50,
                     "camera": {
                         "ip": "192.168.1.101",
                         "isonline": 1
                     },
                     "airbox": {
+                        "id": 3000001,
                         "ip": "192.168.2.101",
-                        "isonline": 1
+                        "pointLon": 118.928102,
+                        "pointLat": 32.03331,
+                        "isonline": 1,
+                        "name": "园区室内",
+                        "loc": "麒麟工业园区演示室内",
+                        "temprature": "29",
+                        "humidity": "60%",
+                        "pm2": 102,
+                        "co2": 550
                     }
                 },
                 {
-                    "id": 2,
+                    "id": 2000002,
                     "name": "室外1",
                     "loc": "麒麟工业园区室外1",
                     "pointLon": 118.929414,
                     "pointLat": 32.03243,
-                    "gateway": 1,
-                    "isonline": 0
+                    "gateway": 1000001,
+                    "isonline": 0,
+                    "curele": 10,
+                    "curpower": 1250,
+                    "curlightnum": 25,
+                    "setlightnum": 50
                 },
                 {
-                    "id": 3,
+                    "id": 2000003,
                     "name": "室外2",
                     "loc": "麒麟工业园区室外2",
                     "pointLon": 118.926701,
                     "pointLat": 32.032032,
-                    "gateway": 1,
-                    "isonline": 1
+                    "gateway": 1000001,
+                    "isonline": 1,
+                    "curele": 30,
+                    "curpower": 3333,
+                    "curlightnum": 35,
+                    "setlightnum": 50,
                 }
             ]
         }
@@ -73,15 +93,17 @@ $(document).ready(function () {
     $("#mapContent").css('width', $("#pageContentContainer").css('width'));
     $("#mapContent").css('height', winHeight - 160);
 
+
+
     map = new BMap.Map("mapContent", {
         MapOptions: {
             enableAutoResize: true
         }
     });
-
+    
     // 创建地图实例
-    map.centerAndZoom(new BMap.Point(118.92812,32.032966), 18);
-    map.addEventListener("tilesloaded",function(){
+    map.centerAndZoom(new BMap.Point(118.92812, 32.032966), 18);
+    map.addEventListener("tilesloaded", function () {
         drawpoint();
     });
     /* map.centerAndZoom('118.893562,32.020265', 12);                 // 初始化地图，设置中心点坐标和地图级别*/
@@ -136,13 +158,21 @@ $(document).ready(function () {
     drawingManager.addEventListener('overlaycomplete', overlaycomplete);
 
 
-
-
     $("#clearRect").on('click', function () {
 
         clearAll();
     })
-    //addCustomLayer();
+    //addCustomLayer();、
+
+    $("#loveGroup").on('change',function () {
+        if($(loveGroup).val().toString() =='1')
+        {
+            map.centerAndZoom(new BMap.Point(118.92812, 32.032966), 18);
+        }else  if($(loveGroup).val().toString() =='2')
+        {
+            map.centerAndZoom(new BMap.Point(118.92812, 32.032966), 16);
+        }
+    })
 })
 
 function clearAll() {
@@ -174,45 +204,45 @@ function drawpoint() {
         marker.setTop(true);
         map.addOverlay(marker);            //增加点
 
-        var html = '  <div class="card-block">  ' +
-            '    <ul class="nav nav-tabs" role="tablist">' +
-            '            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" id="lighttaba"  role="tab">路灯</a> </li>' +
-            '            <li class="nav-item"> <a class="nav-link" data-toggle="tab"  role="tab" id="boxtaba">空气盒子</a> </li>' +
-            '            <li class="nav-item"> <a class="nav-link" data-toggle="tab" role="tab" id="videotaba">监控画面</a> </li>' +
-
-            '            </ul>' +
-            '    <!-- Tab panes -->' +
-            '        <div class="tab-content">' +
-            '            <div class="tab-pane active" id="lighttab" role="tabpanel"> Home This is awesome product and, I am very happy with delivery & product packaging. Overall experience is good & I prefer to buy it again from this portals and like more orders. </div>' +
-            '        <div class="tab-pane" id="boxtab" role="tabpanel"> Profile  This is awesome product and, I am very happy with delivery & product packaging. Overall experience is good & I prefer to buy it again from this portals and like more orders. </div>' +
-            '        <div class="tab-pane" id="videotab" role="tabpanel"> Message  This is awesome product and, I am very happy with delivery & product packaging. Overall experience is good & I prefer to buy it again from this portals and like more orders. </div>' +
+        var html = '            <div class="mt-0 mb-2 ">' +
+            '            <span><span>网关编号：</span><span class="ml-2">' + item.id + '</span></span>' +
+            '        </div>' +
+            '            <div class="mt-0 mb-2 ">' +
+            '            <span><span>网关位置：</span><span class="ml-2">' + item.loc + '</span></span>' +
+            '        </div>' +
+            '            <div class="mt-0 mb-2 ">' +
+            '            <span><span>经度纬度：</span><span class="ml-2">' + item.pointLon + ' , ' + item.pointLat + '</span></span>' +
+            '        </div>' +
+            '            <div class="mt-0 mb-2 ">' +
+            '            <span><span>当前状态：</span><span class="ml-2">' + item.isonline + '</span></span>' +
             '        </div>' +
             '        </div>';
+
         var opts = {
-            width: 400,     // 信息窗口宽度
-            height: 300,     // 信息窗口高度
+            width: 250,     // 信息窗口宽度
+            height: 150,     // 信息窗口高度
             title: item.name
         }
         var infoWindow = new BMap.InfoWindow(html, opts);  // 创建信息窗口对象
         marker.addEventListener("click", function () {
             map.openInfoWindow(infoWindow, pointThis); //开启信息窗口
-            $("#lighttaba").on('click',function () {
-                sellClass('lighttab','active');
-                sellClass('lighttaba','active');
-                clearClass([{id:'boxtab'},{id:'videotab'}],'active');
-                clearClass([{id:'boxtaba'},{id:'videotaba'}],'active');
+            $("#lighttaba").on('click', function () {
+                sellClass('lighttab', 'active');
+                sellClass('lighttaba', 'active');
+                clearClass([{id: 'boxtab'}, {id: 'videotab'}], 'active');
+                clearClass([{id: 'boxtaba'}, {id: 'videotaba'}], 'active');
             })
-            $("#boxtaba").on('click',function () {
-                sellClass('boxtab','active');
-                sellClass('boxtaba','active');
-                clearClass([{id:'lighttab'},{id:'videotab'}],'active');
-                clearClass([{id:'lighttaba'},{id:'videotaba'}],'active');
+            $("#boxtaba").on('click', function () {
+                sellClass('boxtab', 'active');
+                sellClass('boxtaba', 'active');
+                clearClass([{id: 'lighttab'}, {id: 'videotab'}], 'active');
+                clearClass([{id: 'lighttaba'}, {id: 'videotaba'}], 'active');
             })
-            $("#videotaba").on('click',function () {
-                sellClass('videotab','active');
-                sellClass('videotaba','active');
-                clearClass([{id:'lighttab'},{id:'boxtab'}],'active');
-                clearClass([{id:'lighttaba'},{id:'boxtaba'}],'active');
+            $("#videotaba").on('click', function () {
+                sellClass('videotab', 'active');
+                sellClass('videotaba', 'active');
+                clearClass([{id: 'lighttab'}, {id: 'boxtab'}], 'active');
+                clearClass([{id: 'lighttaba'}, {id: 'boxtaba'}], 'active');
             })
         })
 
@@ -232,51 +262,127 @@ function drawpoint() {
                 title: itemlight.name,
                 icon: myIconLight
             }); // 创建点
-
-
             marker.setTop(true);
             map.addOverlay(marker);            //增加点
 
 
-            var html = '  <div class="card-block">  ' +
-                '    <ul class="nav nav-tabs" role="tablist">' +
-                '            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" id="lighttaba"  role="tab">路灯</a> </li>' +
-                '            <li class="nav-item"> <a class="nav-link" data-toggle="tab"  role="tab" id="boxtaba">空气盒子</a> </li>' +
-                '            <li class="nav-item"> <a class="nav-link" data-toggle="tab" role="tab" id="videotaba">监控画面</a> </li>' +
-
+            var html = '  <div class="sixemfont " style="border-top:1px solid  black;">  ' +
+                '<div class=" " style="border-top:1px solid  black;">  ' +
+                '    <ul class="nav nav-tabs" role="tablist " id="ulLight">' +
+                '            <li class="nav-item "> <a class="nav-link active " data-toggle="tab" id="lighttaba"  role="tab">路灯</a> </li>' +
                 '            </ul>' +
                 '    <!-- Tab panes -->' +
-                '        <div class="tab-content">' +
-                '            <div class="tab-pane active" id="lighttab" role="tabpanel"> Home This is awesome product and, I am very happy with delivery & product packaging. Overall experience is good & I prefer to buy it again from this portals and like more orders. </div>' +
-                '        <div class="tab-pane" id="boxtab" role="tabpanel"> Profile  This is awesome product and, I am very happy with delivery & product packaging. Overall experience is good & I prefer to buy it again from this portals and like more orders. </div>' +
-                '        <div class="tab-pane" id="videotab" role="tabpanel"> Message  This is awesome product and, I am very happy with delivery & product packaging. Overall experience is good & I prefer to buy it again from this portals and like more orders. </div>' +
+                '        <div class="tab-content" id="tabContent">' +
+                '            <div class="tab-pane active sixemfont" id="lighttab" role="tabpanel"> ' +
+                '            <div class="mt-0 mb-2 ">' +
+                '            <span><span>路灯编号：</span><span class="ml-2">' + itemlight.id + '</span></span>' +
+                '        </div>' +
+                '            <div class="mt-0 mb-2 ">' +
+                '            <span><span>路灯位置：</span><span class="ml-2">' + itemlight.loc + '</span></span>' +
+                '        </div>' +
+                '            <div class="mt-0 mb-2 ">' +
+                '            <span><span>经度纬度：</span><span class="ml-2">' + itemlight.pointLon + ' , ' + itemlight.pointLat + '</span></span>' +
+                '        </div>' +
+                '            <div class="mt-0 mb-2 ">' +
+                '            <span><span>实时电流：</span><span class="ml-2">' + itemlight.curele + '</span></span>' +
+                '        </div>' +
+                '            <div class="mt-0 mb-2 ">' +
+                '            <span><span>实时功率：</span><span class="ml-2">' + itemlight.curpower + '</span></span>' +
+                '        </div>' +
+                '            <div class="mt-0 mb-2 ">' +
+                '            <span><span>当前状态：</span><span class="ml-2">' + itemlight.isonline + '</span></span>' +
+                '        </div>' +
+                '            <div class="mt-0 mb-2 ">' +
+                '            <span><span>当前亮度：</span><span class="ml-2">' + itemlight.curlightnum + '</span></span>' +
+                '        </div>' +
+                '<div> ' +
+                '                <div class="can-toggle can-toggle--size-small " style="width: 90px;float:left;">            ' +
+                '    <input id="b" type="checkbox">' +
+                '                <label for="b">' +
+                '                <div class="can-toggle__switch" data-checked="开" data-unchecked="关"></div>   ' +
+                '  </label>' +
+                '<div  style="width: 360px"><span >调光(</span> <span id="setlightnum">' + itemlight.setlightnum + '</span><span >) </span><span  style="margin-left: 10px">0 </span>' +
+                '<input class="mt-1" type="range"  value="' + itemlight.setlightnum + '" style="width: 200px;margin-left: 10px" id="rangelightnum" ><span  style="margin-left: 2px">100</span></div>' +
+                '            </div>   ' +
+
+                '</div>' +
+                '</div>' +
+
                 '        </div>' +
                 '        </div>';
+
             var opts = {
                 width: 400,     // 信息窗口宽度
-                height: 300,     // 信息窗口高度
+                height: 360,     // 信息窗口高度
                 title: item.name
             }
             var infoWindow = new BMap.InfoWindow(html, opts);  // 创建信息窗口对象
             marker.addEventListener("click", function () {
                 map.openInfoWindow(infoWindow, pointLightThis); //开启信息窗口
-                $("#lighttaba").on('click',function () {
-                    sellClass('lighttab','active');
-                    sellClass('lighttaba','active');
-                    clearClass([{id:'boxtab'},{id:'videotab'}],'active');
-                    clearClass([{id:'boxtaba'},{id:'videotaba'}],'active');
+
+                var html_li_box = ' <li class="nav-item "> <a class="nav-link " data-toggle="tab"  role="tab" id="boxtaba">空气盒子</a> </li>';
+                var html_li_video = '<li class="nav-item "> <a class="nav-link " data-toggle="tab" role="tab" id="videotaba">监控画面</a> </li>';
+                var html_tabcontent_box;
+
+
+                var html_tabcontent_video = '<div class="tab-pane" id="videotab" role="tabpanel"> Message  This is awesome product and, I am very happy with delivery & product packaging. Overall experience is good & I prefer to buy it again from this portals and like more orders. </div>';
+
+                if (itemlight.airbox != null) {
+                    html_tabcontent_box = '        <div class="tab-pane" id="boxtab" role="tabpanel">' +
+                        '            <div class="mt-0 mb-2 ">' +
+                        '            <span><span>盒子编号&nbsp;&nbsp;&nbsp;：</span><span class="ml-2">' + itemlight.airbox.id + '</span></span>' +
+                        '        </div>' +
+                        '            <div class="mt-0 mb-2 ">' +
+                        '            <span><span>盒子位置&nbsp;&nbsp;&nbsp;：</span><span class="ml-2">' + itemlight.airbox.loc + '</span></span>' +
+                        '        </div>' +
+                        '            <div class="mt-0 mb-2 ">' +
+                        '            <span><span>经度纬度&nbsp;&nbsp;&nbsp;：</span><span class="ml-2">' + itemlight.airbox.pointLon + ' , ' + itemlight.pointLat + '</span></span>' +
+                        '        </div>' +
+                        '            <div class="mt-0 mb-2 ">' +
+                        '            <span><span>当前温度&nbsp;&nbsp;&nbsp;：</span><span class="ml-2">' + itemlight.airbox.temprature + '</span></span>' +
+                        '        </div>' +
+                        '            <div class="mt-0 mb-2 ">' +
+                        '            <span><span>当前湿度&nbsp;&nbsp;&nbsp;：</span><span class="ml-2">' + itemlight.airbox.humidity + '</span></span>' +
+                        '        </div>' +
+                        '            <div class="mt-0 mb-2 ">' +
+                        '            <span><span>当前PM2.5：</span><span class="ml-2">' + itemlight.airbox.pm2 + '</span></span>' +
+                        '        </div>' +
+                        '            <div class="mt-0 mb-2 ">' +
+                        '            <span><span>当前CO2&nbsp;&nbsp;：</span><span class="ml-2">' + itemlight.airbox.co2 + '</span></span>' +
+                        '        </div>' +
+
+                        '            <div class="mt-0 mb-2 ">' +
+                        '            <span><span>当前状态&nbsp;&nbsp;&nbsp;：</span><span class="ml-2">' + itemlight.airbox.isonline + '</span></span>' +
+                        '        </div>';
+
+                    $("#ulLight").append(html_li_box);
+                    $("#tabContent").append(html_tabcontent_box);
+                }
+
+                if (itemlight.camera != null) {
+                    $("#ulLight").append(html_li_video);
+                    $("#tabContent").append(html_tabcontent_video);
+                }
+
+
+                $("#rangelightnum").RangeSlider({min: 0, max: 100, step: 1, callback: change});
+                $("#lighttaba").on('click', function () {
+                    sellClass('lighttab', 'active');
+                    sellClass('lighttaba', 'active');
+                    clearClass([{id: 'boxtab'}, {id: 'videotab'}], 'active');
+                    clearClass([{id: 'boxtaba'}, {id: 'videotaba'}], 'active');
                 })
-                $("#boxtaba").on('click',function () {
-                    sellClass('boxtab','active');
-                    sellClass('boxtaba','active');
-                    clearClass([{id:'lighttab'},{id:'videotab'}],'active');
-                    clearClass([{id:'lighttaba'},{id:'videotaba'}],'active');
+                $("#boxtaba").on('click', function () {
+                    sellClass('boxtab', 'active');
+                    sellClass('boxtaba', 'active');
+                    clearClass([{id: 'lighttab'}, {id: 'videotab'}], 'active');
+                    clearClass([{id: 'lighttaba'}, {id: 'videotaba'}], 'active');
                 })
-                $("#videotaba").on('click',function () {
-                    sellClass('videotab','active');
-                    sellClass('videotaba','active');
-                    clearClass([{id:'lighttab'},{id:'boxtab'}],'active');
-                    clearClass([{id:'lighttaba'},{id:'boxtaba'}],'active');
+                $("#videotaba").on('click', function () {
+                    sellClass('videotab', 'active');
+                    sellClass('videotaba', 'active');
+                    clearClass([{id: 'lighttab'}, {id: 'boxtab'}], 'active');
+                    clearClass([{id: 'lighttaba'}, {id: 'boxtaba'}], 'active');
                 })
             })
         })
@@ -284,6 +390,13 @@ function drawpoint() {
     })
 
 
+}
+
+
+function change($input) {
+    /*内容可自行定义*/
+    console.log($("#rangelightnum").val());
+    $("#setlightnum").text($("#rangelightnum").val());
 
 }
 
@@ -303,18 +416,16 @@ function getWindowHeight() {
 }
 
 
-function sellClass(tabid,className) {
-    if($("#"+tabid).hasClass(className) == false)
-    {
-        $("#"+tabid).addClass(className)
+function sellClass(tabid, className) {
+    if ($("#" + tabid).hasClass(className) == false) {
+        $("#" + tabid).addClass(className)
     }
 }
 
-function clearClass(tabids,className) {
-    $.each(tabids,function (index,item) {
-        if($("#"+item.id).hasClass(className))
-        {
-            $("#"+item.id).removeClass(className);
+function clearClass(tabids, className) {
+    $.each(tabids, function (index, item) {
+        if ($("#" + item.id).hasClass(className)) {
+            $("#" + item.id).removeClass(className);
         }
     })
 

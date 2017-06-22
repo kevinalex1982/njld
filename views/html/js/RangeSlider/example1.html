@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+	<title>Solid Color demo</title>
+		<script type="text/javascript" src="lib/jquery.js"></script>
+		<script type="text/javascript" src="src/RangeSlider1.js"></script>
+		<link rel="stylesheet" href="css/slider1.css" type="text/css">
+	</head>
+
+	<body>
+		<div id="test">
+			<input type="range" value="0">
+		</div>
+
+		<script>
+			var change = function($input) {
+				/*内容可自行定义*/
+				console.log("123");
+			}
+
+			$('input').RangeSlider({ min: 0,   max: 100,  step: 0.1,  callback: change});
+
+		</script>
+	</body>
+</html>
