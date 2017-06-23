@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="js/RangeSlider/css/slider.css" type="text/css">
+<div class="card full-screen-container" id="LivePower">
+    <div class="card-header align-items-start justify-content-between flex">
+        <ul class="nav nav-pills card-header-pills pull-left">
+
+            <li class="nav-item ">
+                <select class="form-control outline-primary eightemfont" id="areaLivePower" title="区域">
+                    <option value="0" selected>全部区域</option>
+                    <option value="1">鼓楼区</option>
+                    <option value="2">玄武区</option>
+                    <option value="3">秦淮区</option>
+                </select>
+            </li>
+
+
+            <li class="nav-item ml-2 ">
+                <select class="form-control outline-primary eightemfont" id="devicestatus">
+                    <option value="0" selected>全部状态</option>
+                    <option value="1">正常</option>
+                    <option value="2">断线</option>
+
+                </select>
+            </li>
+
+        </ul>
+        <ul class="nav nav-pills card-header-pills pull-right">
+            <li class="nav-item">
+                <button class="btn btn-sm btn-link btn-round outline-primary" id="addToLoveGroup">批量调光&开关
+                </button>
+            </li>
+
+            <li class="nav-item ml-2">
+                <button class="btn btn-sm btn-link btn-round refresh-btn"><i class="fa fa-refresh"></i></button>
+            </li>
+
+        </ul>
+
+    </div>
+    <div class="card-block" id="parentList">
+        <div class="row">
+            <div class="col-sm-16">
+                <div class="card">
+                    <div class="card-block">
+                        <table class="table " id="dataTables-light">
+                            <thead>
+                            <tr>
+                                <th><input type="checkbox" id="employeeCheckAll"></th>
+                                <th>编号</th>
+                                <th>路灯名称</th>
+                                <th>网关名称</th>
+                                <th>所属区域</th>
+                                <th>所属道路</th>
+                                <th>亮灯状态</th>
+                                <th>在线状态</th>
+                                <th>当前亮度</th>
+                                <th>实时功率(W)</th>
+                                <th>电流(A)</th>
+                                <th>电压(V)</th>
+                                <th>操作</th>        
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/RangeSlider/src/RangeSlider.js"></script>
+<!-- DataTables JavaScript -->
+<script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/js/dataTables.bootstrap4.js"></script>
+<script src="vendor/datatables/js/dataTables.responsive.min.js"></script>
+
+<script src="js/customizeJS/devices.js"></script>
+<script src="js/customizeJS/LightControl.js"></script>
+</script>

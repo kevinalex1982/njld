@@ -13,13 +13,13 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
             url:"/map",
             templateUrl: "Map.html"
         })
-        .state("gameInfo", {
-            url:"/gameInfo",
-            templateUrl: "gameInfo.html"
+        .state("mediacenter", {
+            url:"/mediacenter",
+            templateUrl: "MediaCenter.html"
         })
-        .state("logInfo", {
-        url:"/logInfo",
-        templateUrl: "logInfo.html"
+        .state("lightcontrol", {
+        url:"/lightcontrol",
+        templateUrl: "LightControl.html"
     });
 
 });/**
