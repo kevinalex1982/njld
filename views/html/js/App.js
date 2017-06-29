@@ -17,6 +17,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
             url:"/mediacenter",
             templateUrl: "MediaCenter.html"
         })
+        .state("video", {
+            url:"/video",
+            templateUrl: "Video.html"
+        })
         .state("lightcontrol", {
         url:"/lightcontrol",
         templateUrl: "LightControl.html"

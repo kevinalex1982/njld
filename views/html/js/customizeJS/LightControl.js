@@ -30,7 +30,7 @@ $(document).ready(function() {
             "render": function (data, type, full, meta) {
 
                 if (data == '0') {
-                    return '<i class="fa fa-times-circle"></i>';
+                    return '<i  class="fa fa-times-circle"></i>';
                 } else if (data == '1') {
 
                     return '<i class="fa fa-lightbulb-o"></i>';
